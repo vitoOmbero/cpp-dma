@@ -1,0 +1,35 @@
+
+- demangled extern C
+- mangled C++
+- without explicit symbols
+linux/mingw - using header C++ 
+//...Makefile
+    libshared.so: shared.cpp
+    $(CXX) -fPIC -c shared.cpp -o shared.o
+    $(CXX) -shared  -Wl,-soname,libshared.so -o libshared.so shared.o
+//...
+
+- windows -  using declspec + extern C
+#ifdef BUILD_DLL
+    #define DLL_EXPORT __declspec(dllexport)
+#else
+    #define DLL_EXPORT __declspec(dllimport)
+#endif
+- windows - using nothing 
+    int ** (*pfn)(int, int);
+	pfn = (int ** (*)(int, int))GetProcAddress(hDll, (LPCSTR)1);
+    
+- windows - using headers?
+- windows - using mangled explicit symbols?
+
+TODO: (for cpp-dma)
+mix compilers for client and lib
+
+linux:
+gcc & gcc   //  clang & clang
+gcc & clang //  clang & gcc
+
+windows:
+mingw & mingw   // clang & clang    //  msvc++ & msvc++
+mingw & msvc++  // clang & msvc++   //  msvc++ & mingw 
+mingw & clang   // clang & mingw    //  msvc++ & clang
