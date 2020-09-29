@@ -25,6 +25,8 @@ linux/mingw - using header C++
 TODO: (for cpp-dma)
 mix compilers for client and lib
 
+all cases?
+
 linux:
 gcc & gcc   //  clang & clang
 gcc & clang //  clang & gcc

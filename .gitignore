@@ -42,6 +42,10 @@
 
 #Cmake
 **CMakeLists.txt?*
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+
 
 ### VisualStudioCode ###
 **/.vscode/*
